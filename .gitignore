@@ -27,3 +27,4 @@ bin/
 .DS_STORE
 .project
 dependency-reduced-pom.xml
+.classpath
