@@ -1,4 +1,11 @@
 language: java
 services:
   - docker
-script: mvn clean install
+jobs:
+  include:
+    - stage: test
+      script: mvn clean install
+    - stage: build
+      script: mvn clean install
+    - stage: publish
+      script: mvn clean install
