@@ -41,7 +41,7 @@ Three stages:
 * `Test` : Compile and unit test
 * `Build` : Build Docker image
 * `Publish`: Publish Docker image
-https://github.com/leopppp/java-rest-template/blob/master/CI-Pipeline.png
+![CI screenshot](https://github.com/leopppp/java-rest-template/blob/master/CI-Pipeline.png)
 
 ## Toolchain
 * TravisCI
