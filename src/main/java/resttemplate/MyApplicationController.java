@@ -9,7 +9,6 @@ import org.json.simple.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 @RestController
 public class MyApplicationController implements ErrorController {
 
@@ -17,45 +16,18 @@ public class MyApplicationController implements ErrorController {
     // private MyApplicationService service;
 
     @RequestMapping(value="/")
-    public JSONObject getRoot(){
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("data", "Hello World");
-        } catch(Exception e){
-            if(e.getMessage().equals("Invalid name")){
-                json.put("statusCode", 400);
-                json.put("message", "The name you entered is invalid");
-                json.put("data", "");
-            }
-            else if(e.getMessage().equals("Invalid relation")){
-                json.put("statusCode", 400);
-                json.put("message", "The relation you entered is invalid");
-                json.put("data", "");
-            }
-        }
-        return json;
+    public String getRoot(){
+        return "Hello World";
     }
 
     @RequestMapping(value="/status")
     public JSONObject getStatus(){
 
         JSONObject json = new JSONObject();
-        try {
-            json.put("data", "status");
-            json.put("statusCode", 200);
-        } catch(Exception e){
-            if(e.getMessage().equals("Invalid name")){
-                json.put("statusCode", 400);
-                json.put("message", "The name you entered is invalid");
-                json.put("data", "");
-            }
-            else if(e.getMessage().equals("Invalid relation")){
-                json.put("statusCode", 400);
-                json.put("message", "The relation you entered is invalid");
-                json.put("data", "");
-            }
-        }
+
+        json.put("version", ConfigUtil.getConfig("version"));
+        json.put("description", ConfigUtil.getConfig("description"));
+
         return json;
     }
 

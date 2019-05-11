@@ -1,4 +1,4 @@
-package resttepmplate.utils;
+package resttemplate;
 
 import java.io.IOException;
 import java.io.InputStream;
