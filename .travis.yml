@@ -12,15 +12,19 @@ before_script:
 jobs:
   include:
     - stage: test 
-      script: mvn clean install
+      script: 
+      - mvn clean install
+      - java -jar ./target/resttemplate-1.0.jar
+      - curl http://127.0.0.1:8080/
+      - curl http://127.0.0.1:8080/status
     - stage: build
       skip_cleanup: true
       script: 
       - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-      - docker build -t java-rest-template .
-      - docker images 
+      - docker build -t java-rest-template .  
     - stage: publish
       skip_cleanup: true
       script: 
+      - docker images 
       - docker tag java-rest-template $DOCKER_USER/java-rest-template
       - docker push $DOCKER_USER/java-rest-template
