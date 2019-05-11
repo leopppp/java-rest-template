@@ -10,7 +10,7 @@ import org.json.simple.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class MyApplicationController implements ErrorController {
+public class MyApplicationController {
 
     // @Autowired
     // private MyApplicationService service;
@@ -27,43 +27,9 @@ public class MyApplicationController implements ErrorController {
 
         json.put("version", ConfigUtil.getConfig("version"));
         json.put("description", ConfigUtil.getConfig("description"));
+        json.put("lastcommitsha", ConfigUtil.getLastCommitSha());
 
         return json;
     }
-
-    @ExceptionHandler(MissingServletRequestParameterException.class)
-    public JSONObject handleMissingParams(MissingServletRequestParameterException ex) {
-        String name = ex.getParameterName();
-        JSONObject json = new JSONObject();
-        json.put("statusCode", 422);
-        json.put("message", name + " parameter is missing");
-        return json;
-
-    }
-
-    @RequestMapping("/*")
-    public JSONObject invalidUrl(){
-        JSONObject json = new JSONObject();
-        json.put("statusCode", 404);
-        json.put("message", "The url endpoint is not correct. Please try this endpoint -> /getPeople");
-        return json;
-    }
-
-    @RequestMapping("/error")
-    @ResponseBody
-    public JSONObject handleError(HttpServletRequest request) {
-        JSONObject json = new JSONObject();
-        json.put("statusCode", 500);
-        json.put("message", "Internal Server error occurred. Most probably the result should have been an empty array. Sadly, there wasn't enough time to check all cases");
-        json.put("data", new String[]{});
-        return json;
-
-    }
-
-    @Override
-    public String getErrorPath() {
-        return "/error";
-    }
-
 
 }
