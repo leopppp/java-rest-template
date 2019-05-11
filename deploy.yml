@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest-template-deployment
+  labels:
+    app: resttemplate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resttemplate
+  template:
+    metadata:
+      labels:
+        app: resttemplate
+    spec:
+      containers:
+      - name: resttemplate
+        image: index.docker.io/leopppp/resttemplate:v1.0
+        ports:
+        - containerPort: 8080
