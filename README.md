@@ -1,7 +1,7 @@
 # java-rest-template
 ## Overview
 
-Build status: [Travis-ci](https://travis-ci.org/leopppp/java-rest-template) [![Build Status](https://travis-ci.org/leopppp/java-rest-template.svg?branch=master)](https://travis-ci.org/leopppp/java-rest-template)
+[![Build Status](https://travis-ci.org/leopppp/java-rest-template.svg?branch=master)](https://travis-ci.org/leopppp/java-rest-template)
 
 Java RESTful template project
 
