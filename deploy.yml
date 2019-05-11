@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: resttemplate
-        image: index.docker.io/leopppp/resttemplate:v1.0
+        image: index.docker.io/leopppp/java-rest-template:1.0
         ports:
         - containerPort: 8080

@@ -52,6 +52,8 @@ public class ConfigUtil {
      */
     public static String getLastCommitSha() {
     	// Read the last commit SHA value from the environment variable which is set during travis ci building process
-    	return System.getenv("LAST_COMMIT_SHA");
+        String sha = System.getenv("LAST_COMMIT_SHA");
+
+    	return sha != null ? sha : "e28d5a5a215d4aca35666c93f4b31b5c29ea9c72";
     }
 }
