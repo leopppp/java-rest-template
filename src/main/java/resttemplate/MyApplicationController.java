@@ -22,9 +22,7 @@ public class MyApplicationController implements ErrorController {
         JSONObject json = new JSONObject();
         try {
             json.put("data", "Hello World");
-            json.put("statusCode", 200);
-        }
-        catch(Exception e){
+        } catch(Exception e){
             if(e.getMessage().equals("Invalid name")){
                 json.put("statusCode", 400);
                 json.put("message", "The name you entered is invalid");
@@ -46,8 +44,7 @@ public class MyApplicationController implements ErrorController {
         try {
             json.put("data", "status");
             json.put("statusCode", 200);
-        }
-        catch(Exception e){
+        } catch(Exception e){
             if(e.getMessage().equals("Invalid name")){
                 json.put("statusCode", 400);
                 json.put("message", "The name you entered is invalid");
