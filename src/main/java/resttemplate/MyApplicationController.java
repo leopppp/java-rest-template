@@ -1,5 +1,4 @@
 package resttemplate;
-//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.error.ErrorController;
 
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -12,14 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class MyApplicationController {
 
-    // @Autowired
-    // private MyApplicationService service;
-
+    // Handle / endpoint request
     @RequestMapping(value="/")
     public String getRoot(){
         return "Hello World";
     }
 
+    // Handle /status endpoint request
     @RequestMapping(value="/status")
     public JSONObject getStatus(){
 
