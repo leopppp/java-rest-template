@@ -2,8 +2,12 @@ language: java
 services:
   - docker
 env:
-  - DOCKER_USER=leopppp
-  - DOCKER_PASS=pzlvxq710103
+  global:
+    #- secure: "0aZpCe1XsdmArWuC2MvIf5KZAmwVkt5cjK/ewc5SU1eWYvOA79k00ORM2M5sBClwzjXwHfAyQHFRyYNtcTsBer2NesZajIIdZBU+u4TLGkpIs+bGClWqb508QPAzi9FhMuAy+vEXeg2AlGfmnR3vE99VvxB1sUFxbxR7RgBi6iQETZqNNa8tlnDrcvFYdk9MGBWXeS+6pAhPu/a+j323nGsq5YQaO5VoCScNYxRMT6ZvHjNx9IXm36iP6cQP4Vl2qtz/Tyw2jjAigeuKgGIBTp6SdzIobT1f1K0qRFnA9Llxyvbg19FA3ovqICx0V6YPxYZUNgxooEKLaVRWGem8A/7cwxCLDQqy8/FzY8sXUmG2EsNdr44Fk22TJ25yPq+TorK8HER7yyfMt7UWorkiqk4Rcfy7oFkmnamfamiak7Kh1w2Zvo5v4Vq2eqmeFdH5u/RWgD6AAq0e8xeW3Jd1rzraTJ7Rb38BXtEN9EJDbjhhehJDFgtvpBiE9yCZQW103xP2kkk5FY57ZVS9I7tQT820wtT79eZOlJJ3y8sfobxxjmeaZt/OCUUM2K3XhOro5Nmp8LyJzngk2+4FVuY+T028JfFEf5AipoR5R0f3hisHMlrzVag9cUo8t1kxR+6nd6NdcX86Y6ya7z77tJU6u6bvnXP6ou1uAKMMAzS247g="
+    #- secure: "RcAhRA3TB0ZsSm5JsHjCWVoSTNyzqZF3ETJoZcDHqfWlJ7Xx9Si+DkP4KRV618xxhV5M2Yf1iVk0TxZyLvLTljRUdCeLCIrYq6msHEznuemN9zQBxtej1wvPFH6nAVqMu/gEHDOzbVbX3pqDZHe4bpzlmRTS5HAReAsB6edTjJ8c9Xj1+SCJu+wre6aKh3yBfNBh8rUGR6OgsJVxUMC1Hdv5sRgWaRHhKeJD5jsRJ+c44Trq7b0s4kaigAvVhuctBQcY3SJaXu9GLJnHj3cUOKxKayDGOhjdFjrwssUbTo/zaGVhTNxp0OSJaFs71QOKn+86O773I4oN1eN8k+pT+jqRoriFVuFtYduvlefS6U+2IbZK4zaaoNXk0UY8t0630WHZchF246CY7PfiNQQ5rHYn51v9PF78DQkZckI7A5M1+KDjgGmrfvKc1HW4LD4WwFtAsl0QbIGfn8Cvbg4FuBCCsQmcxqQEXXIgjJpdfN8OmuCQER6t+zhm3EdDyvLcj8cHL9WBXkmxG41EgUWPOs/abCfXG41zB+LtmxswtuY3pi/Ev+IJkeV/7QYbFiQOH5DAf0PDRjGGEeGb62FRqIgyXmqtu6vQ23d3IiDvlLHi2gWW4SFqXLq9keQUNYsnejIQHgKL6ky2qSCW4cnlIpEStyI3P2F7/LygEWOh5MM="
+    - LAST_COMMIT_SHA=${TRAVIS_COMMIT}
+    - DOCKER_USER=leopppp
+    - DOCKER_PASS=pzlvxq710103
 before_script:
   - echo $LAST_COMMIT_SHA 
 jobs:
@@ -15,10 +19,10 @@ jobs:
       skipclean: true
       script: 
       - echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-      - docker build -t java-rest-template:1.0 --build-arg LAST_COMMIT_SHA=$(git rev-parse HEAD) .
+      #- docker login -u leopppp -p pzlvxq710103
+      - docker build -t java-rest-template:1.0 --build-arg LAST_COMMIT_SHA=$LAST_COMMIT_SHA . 
     - stage: publish
       skipclean: true
-      script:
       - docker images 
       - docker tag java-rest-template:1.0 leopppp/java-rest-template:1.0
       - docker push leopppp/java-rest-template:1.0
