@@ -8,7 +8,6 @@ env:
   - LAST_COMMIT_SHA=${TRAVIS_COMMIT}
 before_script:
   - echo $LAST_COMMIT_SHA 
-- npm test
 jobs:
   include:
     - stage: test 
