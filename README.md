@@ -1,7 +1,5 @@
 # java-rest-template
-## Overview
-
-Build status: [Travis-ci](https://travis-ci.org/leopppp/java-rest-template) [![Build Status](https://travis-ci.org/leopppp/java-rest-template.svg?branch=master)](https://travis-ci.org/leopppp/java-rest-template)
+[![Build Status](https://travis-ci.org/leopppp/java-rest-template.svg?branch=master)](https://travis-ci.org/leopppp/java-rest-template)
 
 Java RESTful template project
 
@@ -9,8 +7,7 @@ Java RESTful template project
 * `GET /` : Returns "Hello World" message
 * `GET /status` : Returns a JSON status object describing the version, description and the current git commit SHA
 
-It is already deployed onto Goolge cloud as a service, which you can access via the Internet.
-Click the link below to have a try:
+It is already deployed onto Goolge cloud as a service, which you can access via the Internet. Try it via the links below:
 * http://35.244.64.100
 * http://35.244.64.100/status
 

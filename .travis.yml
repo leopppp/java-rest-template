@@ -18,11 +18,12 @@ jobs:
     - stage: build
       script: 
       - echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-      #- docker login -u leopppp -p pzlvxq710103
       - docker build -t java-rest-template:1.0 --build-arg LAST_COMMIT_SHA=$LAST_COMMIT_SHA . 
     - stage: publish
       skipclean: true
       script:
+      - echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+      - docker build -t java-rest-template:1.0 --build-arg LAST_COMMIT_SHA=$LAST_COMMIT_SHA . 
       - docker images 
       - docker tag java-rest-template:1.0 leopppp/java-rest-template:1.0
       - docker push leopppp/java-rest-template:1.0
