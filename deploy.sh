@@ -3,11 +3,12 @@
 # Build API from source code (Prerequisite: Have JDK 1.8 and maven installed)
 
 #Change current directory to the root directoy of java-rest-template repository
-mvn clean install # Creates jar in target->resttemplate-1.0.jar
+mvn clean install 
+# Creates jar in target->resttemplate-1.0.jar
 # To run the jar on local, you can run this command -> java -jar target/resttemplate-1.0.jar
 
 # Build container from Docker file (Prerequisite: Docker installed)
-docker build -t java-rest-template:1.0 .
+docker build -t java-rest-template:1.0 --build-arg LAST_COMMIT_SHA=$(git rev-parse HEAD) .
 # Pushing of docker image to registry is not included to avoid sharing credentials
 docker tag java-rest-template:1.0 leopppp/java-rest-template:1.0
 docker push leopppp/java-rest-template:1.0
