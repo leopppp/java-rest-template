@@ -12,9 +12,6 @@ jobs:
     - stage: test 
       script: 
       - mvn clean install
-      - java -jar ./target/resttemplate-1.0.jar
-      - curl http://127.0.0.1:8080/
-      - curl http://127.0.0.1:8080/status
     - stage: build
       script: 
       - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
