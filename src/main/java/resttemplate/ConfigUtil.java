@@ -13,6 +13,11 @@ import java.util.Properties;
  */
 public class ConfigUtil {
 
+	/**
+	 * Get property value from config file.
+	 * @param propertyName the property name
+	 * @return the specified property value
+	 */
     public static String getConfig(String propertyName) {
     	InputStream input = null;
         try {
@@ -44,27 +49,13 @@ public class ConfigUtil {
         return null;
     }
     
+    /**
+     * Get the last commit SHA value.
+     * @return the last commit SHA value
+     */
     public static String getLastCommitSha() {
-    	BufferedReader br = null;
-    	try {
-    		// Read the last commit sha value from the lastCommitSha file which is created during travis ci building process
-    		br = new BufferedReader(new FileReader("lastCommitSha"));
-    	    String line = br.readLine();
-
-    	    return line.toString();    
-    	} catch (Exception ex) {
-    		ex.printStackTrace();
-    	} finally {
-    		if (br != null) {
-    			try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-    		}
-    	} 
-    	
-    	return null;
+    	// Read the last commit SHA value from the environment variable which is set during travis ci building process
+    	return System.getenv("LAST_COMMIT_SHA");
     }
 
 }

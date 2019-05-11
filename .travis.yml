@@ -1,13 +1,13 @@
 language: java
 services:
   - docker
+env:
+  - LAST_COMMIT_SHA=${TRAVIS_COMMIT}
 jobs:
   include:
     - stage: test
-    before_script:
-    - echo ${TRAVIS_COMMIT} > lastcommitsha
-    - cat lastcommitsha
-    script: mvn clean install
+      before-script: echo $LAST_COMMIT_SHA
+      script: mvn clean install
     - stage: build
       script: mvn clean install
     - stage: publish
