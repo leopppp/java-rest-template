@@ -1,7 +1,7 @@
 # java-rest-template
 [![Build Status](https://travis-ci.org/leopppp/java-rest-template.svg?branch=master)](https://travis-ci.org/leopppp/java-rest-template)
 
-Java RESTful template project
+A Java RESTful template project which integrates with Travis pipeline, Docker Hub and Google Cloud.
 
 ## API
 * `GET /` : Returns "Hello World" message
