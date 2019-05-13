@@ -11,6 +11,11 @@ It is already deployed onto Goolge cloud as a service, which you can access via 
 * http://35.244.64.100
 * http://35.244.64.100/status
 
+## Metrics Monitoring
+The Grafana metrics monitoring for Google cloud istio micro services is public accessible here:
+* http://35.244.110.0:3000/d/kE6ggViZk/istio-pilot-dashboard?orgId=1
+  
+![Grafana screenshot](https://github.com/leopppp/java-rest-template/blob/master/GrafanaMetricsMonitoring.png)
 ## Docker Image
 The docker image is published to: index.docker.io/leopppp/java-rest-template:1.0
 
